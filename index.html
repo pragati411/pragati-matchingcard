@@ -1,132 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Memory Matching Card Game</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--Linking our CSS file-->
-<link rel="stylesheet" href="style.css">
-<!--Linking Bootstrap Fontawesome-->
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<!--Linking Google Fonts-->
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker" >
-</head>
-<body>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Linking our CSS file-->
+    <link rel="stylesheet" href="style.css" />
+    <!--Linking Bootstrap Fontawesome-->
+    <link
+      rel="stylesheet prefetch"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+    />
+    <!--Linking Google Fonts-->
+    <link
+      rel="stylesheet prefetch"
+      href="https://fonts.googleapis.com/css?family=Coda"
+    />
+    <link
+      rel="stylesheet prefetch"
+      href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker"
+    />
 
-    <div class="container">
+    <style>
+      .main {
+        margin-top: 100px;
+        display: flex;
+        gap: 26px;
+        justify-content: center;
+        align-items: flex-start;
+      }
 
-        <div class="control-buttons">
+      .profile-card {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        box-shadow: 0px 0px 3px 1px silver;
+        margin: 10px;
+        padding: 38px;
+        justify-content: center;
+        align-items: center;
+      }
+      .grid-area {
+        display: flex;
+      }
+
+      .profile-avatar {
+        background-color: #ff7979;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 22px;
+      }
+
+      .profile-name-title {
+        text-align: center;
+      }
+
+      ul li {
+        list-style-type: none;
+      }
+      ul.stars {
+        display: flex;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .rating-view {
+        display: flex;
+        gap: 12px;
+      }
+
+      .timer {
+        border: 0.5px solid silver;
+        padding: 6px;
+        border-radius: 6px;
+        margin: 12px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn-restart {
+        background: #30336b;
+        outline: none;
+        border: none;
+        color: #fff;
+        width: 100%;
+        border: 1px solid silver;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <section class="grid-area">
+        <div class="container">
+          <div class="control-buttons">
             <span>Start Game</span>
           </div>
-          <div class="info-container">
-            <div class="name">Hello: <span></span></div>
-          </div>
 
-        <section class="score-panel">
-            <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-            </ul>
-
-            <span class="moves">0</span> Move
-
-            <div class="timer">
-            </div>
-
-            <div class="restart" onclick="startGame()">
-                <i class="fa fa-repeat"></i>
-            </div>
-        </section>
-
-        <ul class="deck" id="card-deck">
+          <ul class="deck" id="card-deck">
             <li class="card" type="diamond">
-                <i class="fa fa-diamond"></i>
-                <img src="" alt="">
+              <i class="fa fa-diamond"></i>
+              <img src="" alt="" />
             </li>
             <li class="card" type="plane">
-                <i class="fa fa-paper-plane-o"></i>
-                <img src="" alt="">
+              <i class="fa fa-paper-plane-o"></i>
+              <img src="" alt="" />
             </li>
             <li class="card match" type="anchor">
-                <i class="fa fa-anchor"></i>
-                <img src="" alt="">
+              <i class="fa fa-anchor"></i>
+              <img src="" alt="" />
             </li>
-            <li class="card" type="bolt" >
-                <i class="fa fa-bolt"></i>
-                <img src="" alt="">
+            <li class="card" type="bolt">
+              <i class="fa fa-bolt"></i>
+              <img src="" alt="" />
             </li>
             <li class="card" type="cube">
-                <i class="fa fa-cube"></i>
-                
+              <i class="fa fa-cube"></i>
             </li>
             <li class="card match" type="anchor">
-                <i class="fa fa-anchor"></i>
+              <i class="fa fa-anchor"></i>
             </li>
             <li class="card" type="leaf">
-                <i class="fa fa-leaf"></i>
+              <i class="fa fa-leaf"></i>
             </li>
             <li class="card" type="bicycle">
-                <i class="fa fa-bicycle"></i>
+              <i class="fa fa-bicycle"></i>
             </li>
             <li class="card" type="diamond">
-                <i class="fa fa-diamond"></i>
+              <i class="fa fa-diamond"></i>
             </li>
             <li class="card" type="bomb">
-                <i class="fa fa-bomb"></i>
+              <i class="fa fa-bomb"></i>
             </li>
             <li class="card" type="leaf">
-                <i class="fa fa-leaf"></i>
+              <i class="fa fa-leaf"></i>
             </li>
             <li class="card" type="bomb">
-                <i class="fa fa-bomb"></i>
+              <i class="fa fa-bomb"></i>
             </li>
             <li class="card open show" type="bolt">
-                <i class="fa fa-bolt"></i>
+              <i class="fa fa-bolt"></i>
             </li>
             <li class="card" type="bicycle">
-                <i class="fa fa-bicycle"></i>
+              <i class="fa fa-bicycle"></i>
             </li>
             <li class="card" type="plane">
-                <i class="fa fa-paper-plane-o"></i>
+              <i class="fa fa-paper-plane-o"></i>
             </li>
             <li class="card" type="cube">
-                <i class="fa fa-cube"></i>
+              <i class="fa fa-cube"></i>
             </li>
-        </ul>
+          </ul>
 
-        <div id="popup1" class="overlay">
+          <div id="popup1" class="overlay">
             <div class="popup">
-                <h2>Congratulations..............!!!!!!!! 🎉</h2>
-                <a class="close" href="#">×</a>
-                <div class="content-1">
-                    you won !!!!!  🎉🎉
-                </div>
-                <div class="content-2">
-                    <p>You made <span id="finalMove"> </span> moves </p>
-                    <p>in <span id="totalTime"> </span> </p>
-                    <p>Rating:  <span id="starRating"></span></p>
-                </div>
-                <button id="play-again"onclick="playAgain()">
-                    Play again 😄</a>
-                </button>
+              <h2>Congratulations..............!!!!!!!! 🎉</h2>
+              <a class="close" href="#">×</a>
+              <div class="content-1">you won !!!!! 🎉🎉</div>
+              <div class="content-2">
+                <p>You made <span id="finalMove"> </span> moves</p>
+                <p>in <span id="totalTime"> </span></p>
+                <p>Rating: <span id="starRating"></span></p>
+              </div>
+              <button id="play-again" onclick="playAgain()">
+                Play again 😄
+              </button>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="profile-card">
+        <div class="info-container">
+          <div class="profile-avatar">AJ</div>
+          <div class="profile-name">
+            <p class="profile-name-title">Ankit Jain</p>
+          </div>
+          <div style="display: none" class="name">Hello: <span></span></div>
         </div>
 
+        <div class="rating-view">
+          <ul class="stars">
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+          </ul>
+          <span> | </span>
+          <span class="moves">0</span> Move
+        </div>
 
+        <div class="timer"></div>
+
+        <button class="restart btn-restart" onclick="startGame()">
+          <i class="fa fa-repeat"></i> Restart Game
+        </button>
+      </section>
     </div>
+
     <audio
-    id="success"
-    src="mixkit-arcade-game-complete-or-approved-mission-205.wav"
-    preload="auto"
-  ></audio>
+      id="success"
+      src="mixkit-arcade-game-complete-or-approved-mission-205.wav"
+      preload="auto"
+    ></audio>
 
-  <audio id="fail" src="1.wav" preload="auto"></audio>
-
+    <audio id="fail" src="1.wav" preload="auto"></audio>
 
     <!--Linking our Javascript File-->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
